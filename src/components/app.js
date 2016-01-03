@@ -5,8 +5,15 @@ import TodoList from './todo_list';
 import Row      from './row';
 import Column   from './column';
 
-
 export default React.createClass({
+  handleInputChange(value) {
+    console.log(value);
+
+    this.setState({
+      inputValue: value
+    });
+  },
+
   render() {
     let name = this.props.name;
 
@@ -21,7 +28,11 @@ export default React.createClass({
         <h1>{ name }</h1>
 
         <Row>
-          <TodoForm/>
+          <TodoForm
+            value={ inputValue }
+            onChange={ this.handleInputChange }
+            onClick={ this.handleOnClick }
+          />
         </Row>
 
         <Row>
